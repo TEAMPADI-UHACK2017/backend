@@ -1,0 +1,17 @@
+%p#notice= notice
+.container
+  .row
+    %h1= @merchant.name
+    %h2 Analytics
+    %p This shows some data that Tipkuu can capture.
+
+    %h4
+      Average Customer Satisfaction
+      %small based on each customer rating
+    = pie_chart Transaction.group(:rating).count
+
+
+    %h4
+      Employee Performance
+      %small based on number of tips
+    = column_chart Tipee.joins(:transactions).group('tipees.name').count
