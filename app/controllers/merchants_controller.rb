@@ -23,7 +23,7 @@ class MerchantsController < ApplicationController
   end
 
   def unionbank_callback
-    { status: 'OK' }.to_json
+    json_response({status: 'TipKuu'})
   end
 
   # POST /merchants
