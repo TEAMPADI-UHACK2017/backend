@@ -1,5 +1,6 @@
 class TippersController < ApplicationController
   # before_action :authenticate_tipper!
+  skip_before_action :verify_authenticity_token, only: [:transfer]
   before_action :set_tipper, only: [:show, :edit, :update, :destroy]
   before_action :set_tipee, only: [:transfer]
 
