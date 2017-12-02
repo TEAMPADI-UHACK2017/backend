@@ -101,7 +101,6 @@ class UnionbankClient
     puts "url=#{url.ai}]"
     puts "headers=#{headers.ai}"
     puts "payload=#{payload.ai}"
-    binding.pry
     response = RestClient.post url, payload, headers
     response
   end
