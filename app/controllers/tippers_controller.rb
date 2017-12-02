@@ -20,7 +20,8 @@ class TippersController < ApplicationController
   # GET /tippers/<email>.json
   def find
     @tipper = Tipper.find_by(email: params[:email])
-    json_response(@tipper)
+    tip_count = @tipper.transactions.count
+    json_response(@tipper.as_json.merge(tips_count: tip_count))
   end
 
   def transfer
