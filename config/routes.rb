@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     collection do
       get 'find'
     end
+    get 'get_token', on: :member
     post 'transfer', on: :member
   end
 

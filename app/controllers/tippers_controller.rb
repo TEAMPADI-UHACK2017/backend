@@ -1,6 +1,7 @@
 class TippersController < ApplicationController
   # before_action :authenticate_tipper!
   before_action :set_tipper, only: [:show, :edit, :update, :destroy]
+  before_action :set_tipee, only: [:transfer]
 
   # GET /tippers
   # GET /tippers.json
@@ -26,6 +27,41 @@ class TippersController < ApplicationController
     # transfer_tipper POST   /tippers/:id/transfer(.:format)
     # tippers#transfer
     # RestClient.get 'http://example.com/resource', {params: {id: 50, 'foo' => 'bar'}}
+    bank_client.get_token(params[:code])
+    details = {
+      account_no: @tipee.account_num,
+      amount: params[:amount],
+      remarks: 'Tip',
+      particulars: 'Transfer particulars',
+      info: [
+          {
+              index: 1,
+              name: 'Recipient',
+              value: @tipee.name
+          },
+          {
+              index: 2,
+              name: 'Message',
+              value: '...'
+          }
+      ]
+    }
+    response = bank_client.transfer(details)
+    response_body = JSON.parse(response.body)
+    json_response(response_body)
+  end
+
+  def get_token
+    json_response({url: bank_client.login_url})
+  end
+
+  def bank_client
+    @bank_client ||= UnionbankClient.new(
+        client_id:  Rails.application.secrets.unionbank_client_id,
+        client_secret:  Rails.application.secrets.unionbank_client_secret,
+        base_url:  Rails.application.secrets.unionbank_client_url,
+        redirect_url:  Rails.application.secrets.unionbank_client_redirect_url
+    )
   end
 
   # GET /tippers/new
@@ -78,13 +114,17 @@ class TippersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tipper
-      @tipper = Tipper.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tipper
+    @tipper = Tipper.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tipper_params
-      params.fetch(:tipper, {})
-    end
+  def set_tipee
+    @tipee = Tipee.find(params[:tipee_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tipper_params
+    params.fetch(:tipper, {})
+  end
 end

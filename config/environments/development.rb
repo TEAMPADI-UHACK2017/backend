@@ -1,4 +1,5 @@
 Rails.application.configure do
+  require 'httplog'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -53,4 +54,17 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  HttpLog.configure do |config|
+
+    # Tweak which parts of the HTTP cycle to log...
+    config.log_connect   = true
+    config.log_request   = true
+    config.log_headers   = true
+    config.log_data      = true
+    config.log_status    = true
+    config.log_response  = true
+    config.log_benchmark = true
+
+  end
 end
