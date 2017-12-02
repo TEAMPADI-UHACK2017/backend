@@ -1,0 +1,2 @@
+module TipeesHelper
+end

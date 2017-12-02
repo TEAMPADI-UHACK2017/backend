@@ -1,0 +1,19 @@
+%h1 Listing tippers
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tippers.each do |tipper|
+      %tr
+        %td= link_to 'Show', tipper
+        %td= link_to 'Edit', edit_tipper_path(tipper)
+        %td= link_to 'Destroy', tipper, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tipper', new_tipper_path
