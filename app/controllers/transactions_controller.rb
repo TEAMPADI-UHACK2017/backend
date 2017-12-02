@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    json_response(@transactions)
   end
 
   # GET /transactions/1

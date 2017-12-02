@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   #root to: "home#index"
   resources :merchants
   resources :tipees
-  resources :tippers
+  resources :tippers do
+    collection do
+      get 'find'
+    end
+  end
   resources :transactions
 end

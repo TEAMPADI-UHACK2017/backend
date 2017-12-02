@@ -6,11 +6,21 @@ class TippersController < ApplicationController
   # GET /tippers.json
   def index
     @tippers = Tipper.all
+    json_response(@tippers)
   end
 
   # GET /tippers/1
   # GET /tippers/1.json
   def show
+  end
+
+  # GET /tippers/<email>
+  # GET /tippers/<email>.json
+  def find
+    puts params.inspect
+    @tipper = Tipper.find_by(email: params[:email])
+    puts @tipper.inspect
+    json_response(@tipper)
   end
 
   # GET /tippers/new

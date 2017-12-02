@@ -1,2 +1,3 @@
 class Tipee < ApplicationRecord
+
 end

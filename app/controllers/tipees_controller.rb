@@ -5,6 +5,7 @@ class TipeesController < ApplicationController
   # GET /tipees.json
   def index
     @tipees = Tipee.all
+    json_response(@tipees)
   end
 
   # GET /tipees/1

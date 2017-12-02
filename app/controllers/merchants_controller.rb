@@ -5,6 +5,7 @@ class MerchantsController < ApplicationController
   # GET /merchants.json
   def index
     @merchants = Merchant.all
+    json_response(@merchants)
   end
 
   # GET /merchants/1
