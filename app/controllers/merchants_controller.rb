@@ -22,6 +22,9 @@ class MerchantsController < ApplicationController
   def edit
   end
 
+  def unionbank_callback
+  end
+
   # POST /merchants
   # POST /merchants.json
   def create
