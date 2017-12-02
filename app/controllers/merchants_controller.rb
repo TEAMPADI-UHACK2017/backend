@@ -22,6 +22,10 @@ class MerchantsController < ApplicationController
   def edit
   end
 
+  def unionbank_callback
+    { status: 'OK' }.to_json
+  end
+
   # POST /merchants
   # POST /merchants.json
   def create

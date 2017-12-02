@@ -17,9 +17,7 @@ class TippersController < ApplicationController
   # GET /tippers/<email>
   # GET /tippers/<email>.json
   def find
-    puts params.inspect
     @tipper = Tipper.find_by(email: params[:email])
-    puts @tipper.inspect
     json_response(@tipper)
   end
 
