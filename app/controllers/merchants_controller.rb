@@ -1,5 +1,5 @@
 class MerchantsController < ApplicationController
-  before_action :set_merchant, only: [:show, :edit, :update, :destroy]
+  before_action :set_merchant, only: [:show, :edit, :update, :destroy, :analytics]
 
   # GET /merchants
   # GET /merchants.json
@@ -11,6 +11,9 @@ class MerchantsController < ApplicationController
   # GET /merchants/1
   # GET /merchants/1.json
   def show
+  end
+
+  def analytics
   end
 
   # GET /merchants/new

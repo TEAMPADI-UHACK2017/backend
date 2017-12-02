@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get '/unionbank_callback' => 'merchants#unionbank_callback'
     end
+    get 'analytics', on: :member
   end
   resources :tipees do
     collection do
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
     get 'get_token', on: :member
     post 'transfer', on: :member
   end
-
 
   resources :transactions
 end

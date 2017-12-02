@@ -16,6 +16,7 @@ gem 'rqrcode'
 gem 'geocoder'
 gem 'awesome_print', '~> 1.8'
 gem 'rest-client'
+gem "chartkick"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
