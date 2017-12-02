@@ -13,6 +13,13 @@ class TipeesController < ApplicationController
   def show
   end
 
+  # GET /tipees/find/<qr_code>
+  # GET /tipees/find/<qr_code>.json
+  def find
+    @tipee = Tipee.find_by(qr_code: params[:qr_code])
+    json_response(@tipee)
+  end
+
   # GET /tipees/new
   def new
     @tipee = Tipee.new

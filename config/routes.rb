@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   #root to: "home#index"
   resources :merchants
-  resources :tipees
+  resources :tipees do
+    collection do
+      get 'find'
+    end
+  end
   resources :tippers do
     collection do
       get 'find'
