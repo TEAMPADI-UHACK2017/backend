@@ -15,7 +15,7 @@ development:
   database: uhack_2017_development
   pool: 5
   username: root
-  password: 
+  password:
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: uhack_2017_test
   pool: 5
   username: root
-  password: 
+  password:
   host: localhost
 
 production:
@@ -36,7 +36,8 @@ production:
   encoding: utf8
   reconnect: false
   database: uhack_2017_production
+  url: <%= ENV['DATABASE_URL'] %>
   pool: 5
   username: root
-  password: 
+  password:
   host: localhost
