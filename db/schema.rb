@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202113116) do
+ActiveRecord::Schema.define(version: 20171202190458) do
 
   create_table "merchants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.float "long", limit: 24
@@ -64,12 +64,13 @@ ActiveRecord::Schema.define(version: 20171202113116) do
   end
 
   create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "tippee_id"
+    t.bigint "tipee_id"
     t.bigint "tipper_id"
     t.decimal "amount", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tippee_id"], name: "index_transactions_on_tippee_id"
+    t.integer "rating"
+    t.index ["tipee_id"], name: "index_transactions_on_tipee_id"
     t.index ["tipper_id"], name: "index_transactions_on_tipper_id"
   end
 

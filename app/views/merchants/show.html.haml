@@ -1,5 +1,16 @@
 %p#notice= notice
+.container
+  .row
+    %h1 Analytics
+    %h4
+      Employee Performance
+      %small based on number of tips
+    = column_chart Tipee.joins(:transactions).group('tipees.name').count
 
+    %h4
+      Average Customer Satisfaction
+      %small based on each customer rating
+    = pie_chart Transaction.group(:rating).count
 
 = link_to 'Edit', edit_merchant_path(@merchant)
 \|
