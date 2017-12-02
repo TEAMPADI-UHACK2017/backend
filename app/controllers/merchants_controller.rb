@@ -23,7 +23,7 @@ class MerchantsController < ApplicationController
   end
 
   def unionbank_callback
-    json_response({status: 'TipKuu'})
+    render plain: 'Please wait...'
   end
 
   # POST /merchants
