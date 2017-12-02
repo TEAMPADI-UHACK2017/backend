@@ -21,6 +21,13 @@ class TippersController < ApplicationController
     json_response(@tipper)
   end
 
+  def transfer
+    # meron sa SECRETS na mga shizzzz
+    # transfer_tipper POST   /tippers/:id/transfer(.:format)
+    # tippers#transfer
+    # RestClient.get 'http://example.com/resource', {params: {id: 50, 'foo' => 'bar'}}
+  end
+
   # GET /tippers/new
   def new
     @tipper = Tipper.new
