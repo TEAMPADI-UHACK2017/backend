@@ -1,7 +1,7 @@
 class TippersController < ApplicationController
   # before_action :authenticate_tipper!
   skip_before_action :verify_authenticity_token, only: [:transfer]
-  before_action :set_tipper, only: [:show, :edit, :update, :destroy]
+  before_action :set_tipper, only: [:show, :edit, :update, :destroy, :transfer]
   before_action :set_tipee, only: [:transfer]
 
   # GET /tippers
@@ -49,6 +49,7 @@ class TippersController < ApplicationController
       ]
     }
     response = bank_client.transfer(details)
+    @tipee.transactions.create(tipper: @tipper, amount: params[:amount], rating: params[:rating].to_i)
     response_body = JSON.parse(response.body)
     json_response(response_body)
   end
